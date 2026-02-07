@@ -1,13 +1,15 @@
-// subtle motion effect
-document.querySelectorAll('.card').forEach(card => {
+document.querySelectorAll('.service-card').forEach(card => {
   card.addEventListener('mousemove', e => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.transform = `rotateX(${-(y - rect.height/2)/20}deg) rotateY(${(x - rect.width/2)/20}deg)`;
+    const r = card.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+    card.style.transform =
+      `rotateX(${-(y - r.height/2)/25}deg)
+       rotateY(${(x - r.width/2)/25}deg)
+       translateY(-12px)`;
   });
 
   card.addEventListener('mouseleave', () => {
-    card.style.transform = 'rotateX(0) rotateY(0)';
+    card.style.transform = 'rotateX(0) rotateY(0) translateY(0)';
   });
 });
